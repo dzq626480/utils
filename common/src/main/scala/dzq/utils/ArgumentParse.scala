@@ -49,8 +49,8 @@ class ArgumentParse(args: Array[String]) {
       v.get.toLowerCase match {
         case "true" => true
         case "false" => false
-        case "yes" => true
-        case "no" => false
+        case "yes" | "y" => true
+        case "no" | "n" => false
         case "on" => true
         case "off" => false
         case _ => defaultVal
