@@ -9,6 +9,8 @@
 
     <modules>
         <module>common</module>
+        <module>hash</module>
+        <module>url</module>
     </modules>
 
     <properties>
@@ -19,10 +21,6 @@
         <scala.binary.version>2.11</scala.binary.version>
         <compile.scope>provided</compile.scope>
     </properties>
-
-    <dependencies>
-
-    </dependencies>
 
     <build>
         <resources>

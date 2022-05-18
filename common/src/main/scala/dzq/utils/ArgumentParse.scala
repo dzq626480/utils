@@ -3,14 +3,14 @@ package dzq.utils
 import scala.collection.mutable
 
 class ArgumentParse(args: Array[String]) {
-  val argsMap: mutable.HashMap[String, String] = new mutable.HashMap[String, String]()
+  private val argsMap: mutable.HashMap[String, String] = new mutable.HashMap[String, String]()
 
   args.foreach { arg =>
     val arr = arg.split("=", 2)
-    if (arr.size > 1) {
+    if (arr.size == 2) {
       argsMap.put(arr(0).trim, arr(1).trim)
     } else {
-      argsMap.put(arr(0).trim, "")
+      argsMap.put(arg.trim, "")
     }
   }
 
@@ -38,9 +38,9 @@ class ArgumentParse(args: Array[String]) {
     if (v.isDefined) v.get.toFloat else defaultVal
   }
 
-  def getArray(argName: String, splitStr:String = ",", defaultVal: Array[String] = Array()): Array[String] = {
+  def getArray(argName: String, splitStr:String = ","): Array[String] = {
     val v = argsMap.get(argName)
-    if (v.isDefined) v.get.split(splitStr) else defaultVal
+    if (v.isDefined) v.get.split(splitStr) else Array[String]()
   }
 
   def getBoolean(argName:String, defaultVal:Boolean = false):Boolean = {
